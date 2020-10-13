@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="matkaklubi.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Matkaklubi - registreeru</title>
+	</head>
+	<body>
+		<div class="container">
+			<nav class="pl-0 navbar navbar-expand-lg navbar-light bg-transparent">
+				<div class="d-flex klubi">
+					<a class="navbar-brand" href="#">
+						<img class="klubilogo" src="./assets/klubilogo.png" alt="" />
+					</a>
+					<p class="klubinimi text-uppercase">Puhas Higi</p>
+				</div>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="klubimenyy collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav ml-auto">
+						<!-- Siia genereerime sisu javascripti abil-->
+					</div>
+				</div>
+			</nav>
+			<h1>Registreeru matkale</h1>
+			<hr />
+			<div class="row">
+				<div id="matka-kirjeldus" class="col-6"></div>
+				<div class="col-6">
+					<!--Pildi atribuudi omistame javascriptiga-->
+					<img id="matka-pilt" class="img-fluid" src="#" alt="matka pilt" />
+				</div>
+			</div>
+			<hr />
+			<form action="/oppurid/veeb40/vormid.php" method="GET">
+				<div class="form-group">
+					<label for="registreerujaEmail">Email</label>
+					<input type="email" class="form-control" name="registreerujaEmail" id="registreerujaEmail" aria-describedby="emailHelp" />
+				</div>
+				<div class="form-group">
+					<label for="registreerujaNimi">Nmi</label>
+					<input type="text" class="form-control" name="registreerujaNimi" id="registreerujaNimi" />
+				</div>
+				<input type="submit" class="btn btn-primary" value="Registreeru">
+			</form>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+			crossorigin="anonymous"
+		></script>
+		<script src="matkaklubi.js"></script>
+	</body>
+</html>

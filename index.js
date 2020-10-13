@@ -28,10 +28,15 @@ function tagastaMatkad(req, res) {
 	});
 }
 
+function tagastaRegistreerimised(req, res) {
+	return res.send({ registreeritud: true});
+}
+
 veebirakendus
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/matkad',tagastaMatkad)
+  .get('/registreerimised',tagastaRegistreerimised)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

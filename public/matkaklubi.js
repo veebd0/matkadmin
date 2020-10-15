@@ -4,23 +4,7 @@ let menyyAndmed = [
 	{ nimi: 'Kontakt', url: 'kontakt.html', title: 'Matkaklubi - kontakt' },
 ];
 
-let matkaAndmed = [
-	{
-		pildiUrl: './assets/syst1.jpg',
-		nimi: 'Süstamatk Võhandu jõel',
-		lyhikirjeldus: 'alsdj alskdjfalsdkjf alskdjf lasjdf laskjdf lasdfasdfljasdfa. DFASdf',
-	},
-	{
-		pildiUrl: './assets/syst2.jpg',
-		nimi: 'Süstamatk Pärnu jõel',
-		lyhikirjeldus: 'alsdj alskdjfalsdkjf alskdjf lasjdf laskjdf lasdfasdfljasdfa. DFASdf',
-	},
-	{
-		pildiUrl: './assets/matk_tartus1.jpg',
-		nimi: 'Tutvume Tartu linnaga',
-		lyhikirjeldus: 'alsdj alskdjfalsdkjf alskdjf lasjdf laskjdf lasdfasdfljasdfa. DFASdf',
-	},
-];
+let matkaAndmed = [];
 
 function menyyValik(menyyObjekt) {
 	let klassid = 'nav-item nav-link';
@@ -74,9 +58,25 @@ function naitaMatkaAndmeidRegistreerimiseks(indeks = 0) {
 	matkaPilt.setAttribute('src', matkaKirjeldus.pildiUrl);
 }
 
+
+function kysiMatkad() {
+	var settings = {
+		async: true,
+		crossDomain: true,
+		url: '/matkad',
+		method: 'GET',
+		headers: {},
+	};
+
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+		naitaMatkaKaarte(response.matkad);
+	});
+}
+
+
 //Näitame kõigil lehtedel samasugust menüüd
 let menyyKast = document.querySelector('.navbar-nav');
-
 let koguMenyy = '';
 for (let i = 0; i < menyyAndmed.length; i++) {
 	koguMenyy += menyyValik(menyyAndmed[i]);
@@ -84,17 +84,24 @@ for (let i = 0; i < menyyAndmed.length; i++) {
 
 menyyKast.innerHTML = koguMenyy;
 
-let matkaKaardid = document.querySelector('#matkakaardid');
-if (matkaKaardid) {
-	let matkaSisu = '';
-	for (let i = 0; i < matkaAndmed.length; i++) {
-		matkaSisu += matkaKaart(matkaAndmed[i], i);
+function naitaMatkaKaarte(matkaAndmed) {
+	let matkaKaardid = document.querySelector('#matkakaardid');
+	if (matkaKaardid) {
+		let matkaSisu = '';
+		for (let i = 0; i < matkaAndmed.length; i++) {
+			matkaSisu += matkaKaart(matkaAndmed[i], i);
+		}
+		matkaKaardid.innerHTML = matkaSisu; //loome esilehele matkakaartide sis
 	}
-	matkaKaardid.innerHTML = matkaSisu; //loome esilehele matkakaartide sis
 }
+
 
 let matk = 0;
 //loeme lehe aadressilt get parameetri matk
 let minuURL = new URL(document.URL);
 matk = minuURL.searchParams.get('matk');
 naitaMatkaAndmeidRegistreerimiseks(matk); // näitame registreerumise lehel matka kirjeldust ja pilti
+
+kysiMatkad();
+
+document.querySelector('#matkakaardid').innerHTML='Loen andmeid ...';

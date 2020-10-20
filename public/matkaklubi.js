@@ -95,5 +95,6 @@ function registreeri() {
 
 	$.ajax(settings).done(function (response) {
 		console.log(response);
+		window.open('/');
 	});
 }

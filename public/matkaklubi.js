@@ -95,6 +95,28 @@ function naitaMatkaKaarte(matkaAndmed) {
 	}
 }
 
+function registreeri() {
+	//loeme lehe aadressilt get parameetri matk
+	let minuURL = new URL(document.URL);
+	const matkIndex = minuURL.searchParams.get('matk');
+	const email = document.querySelector('#registreerujaEmail').value;
+	const nimi = document.querySelector('#registreerujaNimi').value;
+
+	console.log(`Salvestan registreerumise: ?matkIndex=${matkIndex}&email=${email}&nimi=${nimi}`);
+
+	var settings = {
+		async: true,
+		crossDomain: true,
+		url: `/registreeri?matkIndex=${matkIndex}&email=${email}&nimi=${nimi}`,
+		method: 'GET',
+		headers: {},
+	};
+
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
+}
+
 
 let matk = 0;
 //loeme lehe aadressilt get parameetri matk

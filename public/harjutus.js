@@ -1,7 +1,7 @@
 var settings = {
 	async: true,
 	crossDomain: true,
-	url: '/matkad',
+	url: '/registreerumised',
 	method: 'GET',
 	headers: {},
 };

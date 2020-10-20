@@ -40,25 +40,6 @@ function matkaKaart(matkaObjekt, i) {
 	return kaart;
 }
 
-
-function naitaMatkaAndmeidRegistreerimiseks(indeks = 0) {
-	const matkaKirjeldus = matkaAndmed[indeks];
-	const kirjeldusElem = document.querySelector('#matka-kirjeldus');
-	const matkaPilt = document.querySelector('#matka-pilt');
-
-	if (!kirjeldusElem)  {
-		return;
-	}
-
-	kirjeldusElem.innerHTML = `
-	<h3>${matkaKirjeldus.nimi}</h3>
-	<div>${matkaKirjeldus.lyhikirjeldus}</div>
-	`;
-
-	matkaPilt.setAttribute('src', matkaKirjeldus.pildiUrl);
-}
-
-
 function kysiMatkad() {
 	var settings = {
 		async: true,
@@ -116,14 +97,3 @@ function registreeri() {
 		console.log(response);
 	});
 }
-
-
-let matk = 0;
-//loeme lehe aadressilt get parameetri matk
-let minuURL = new URL(document.URL);
-matk = minuURL.searchParams.get('matk');
-naitaMatkaAndmeidRegistreerimiseks(matk); // näitame registreerumise lehel matka kirjeldust ja pilti
-
-kysiMatkad();
-
-document.querySelector('#matkakaardid').innerHTML='Loen andmeid ...';
